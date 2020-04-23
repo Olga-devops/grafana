@@ -44,7 +44,7 @@ resource "aws_instance" "grafana" {
     ]
   }
   tags = {
-    Name = "grafana"
+    Name = "qa-grafana"
   }
 }
 
