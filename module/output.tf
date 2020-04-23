@@ -1,5 +1,5 @@
 output "domain" {
-  value = " http://${aws_route53_record.prometheus.name}"
+  value = " http://${aws_route53_record.grafana.name}"
 }
 output "username"{
   value = "admin"

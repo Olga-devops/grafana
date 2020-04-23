@@ -14,15 +14,15 @@ data "aws_ami" "ami_image" {
 
 
 
-resource "aws_instance" "prometheus" {
+resource "aws_instance" "grafana" {
   ami           = "${data.aws_ami.ami_image.id}"
   instance_type = "${var.instance_type}"
-  key_name     = "${aws_key_pair.prometheus.key_name}"
-  iam_instance_profile = "${aws_iam_instance_profile.prometheus_profile.name}"
-  security_groups = ["allow_ssh_and_prometheus"]
+  key_name     = "${aws_key_pair.grafana.key_name}"
+  iam_instance_profile = "${aws_iam_instance_profile.grafana_profile.name}"
+  security_groups = ["allow_ssh_and_grafana"]
   provisioner "file" {
-    source      = "./module/prometheus.sh"
-    destination = "/tmp/prometheus.sh"
+    source      = "./module/grafana.sh"
+    destination = "/tmp/grafana.sh"
     connection {
       host        = "${self.public_ip}"
       type        = "ssh"
@@ -39,19 +39,19 @@ resource "aws_instance" "prometheus" {
     }
 
     inline = [
-      "chmod +x /tmp/prometheus.sh",
-      "sudo bash /tmp/prometheus.sh"
+      "chmod +x /tmp/grafana.sh",
+      "sudo bash /tmp/grafana.sh"
     ]
   }
   tags = {
-    Name = "Prometheus"
+    Name = "grafana"
   }
 }
 
 
-resource "aws_security_group" "allow_ssh_and_prometheus" {
-  name        = "allow_ssh_and_prometheus"
-  description = "Allow SSH and prometheus"
+resource "aws_security_group" "allow_ssh_and_grafana" {
+  name        = "allow_ssh_and_grafana"
+  description = "Allow SSH and grafana"
   ingress {
     from_port   = 22
     to_port     = 22

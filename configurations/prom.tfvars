@@ -2,7 +2,7 @@ region		                    =			"us-west-2"
 s3_bucket                       =	        "grafana-bucket-team2"
 s3_folder_region                =	        "us-west-2"
 zone_id			                =	        "Z32OHGRMBVZ9LR" 
-domain			                =	        "qa-grafana.acirrustech.com"
+domain			                =	        "grafana.acirrustech.com"
 
 
 

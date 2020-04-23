@@ -1,12 +1,12 @@
-output "prometheus_tower" {
-  value = "${module.prometheus.domain}"
+output "grafana_tower" {
+  value = "${module.grafana.domain}"
 }
 output "username" {
-  value = "${module.prometheus.username}"
+  value = "${module.grafana.username}"
 }
 output "password" {
-  value = "${module.prometheus.password}"
+  value = "${module.grafana.password}"
 }
 output "To_Do" {
-  value = "${module.prometheus.To_Do}"
+  value = "${module.grafana.To_Do}"
 }

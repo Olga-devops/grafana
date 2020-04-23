@@ -1,5 +1,5 @@
-resource "aws_iam_role" "prometheus_admin" {
-  name = "prometheus_admin"
+resource "aws_iam_role" "grafana_admin" {
+  name = "grafana_admin"
 
   assume_role_policy = <<EOF
 {
@@ -22,14 +22,14 @@ EOF
   }
 }
 
-resource "aws_iam_instance_profile" "prometheus_profile" {
-  name = "prometheus_profile"
-  role = "${aws_iam_role.prometheus_admin.name}"
+resource "aws_iam_instance_profile" "grafana_profile" {
+  name = "grafana_profile"
+  role = "${aws_iam_role.grafana_admin.name}"
 }
 
-resource "aws_iam_role_policy" "prometheus_admin_policy" {
-  name = "prometheus_admin_policy"
-  role = "${aws_iam_role.prometheus_admin.id}"
+resource "aws_iam_role_policy" "grafana_admin_policy" {
+  name = "grafana_admin_policy"
+  role = "${aws_iam_role.grafana_admin.id}"
 
   policy = <<EOF
 {
